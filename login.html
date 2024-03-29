@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Hotel - Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 591 villa agency
+
+https://templatemo.com/tm-591-villa-agency
+
+-->
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+
+
+<script>
+			//validation name
+			function validationN(name){
+				if(name == ""){
+					alert('le champ name est obligatoire');
+					return false;
+				}
+        event.preventDefault();
+				return true;
+			}
+			
+			//validation Mail
+			function validationMail(email){
+
+        if(email == ""){
+					alert('le champ email est obligatoire');
+					return false;
+				}
+
+
+			//email = login@domaine.ext
+			pos1 = email.indexOf('@');
+			login = email.substring(0, pos1); //[0, pos1[
+			pos2 = email.lastIndexOf('.');
+			domaine = email.substring(pos1 + 1, pos2);
+			extension = email.substring(pos2 +1, email.length);
+			
+			//login
+			if(login.length<2){
+				alert('login min 2 ');
+				return false;
+			}
+			
+			//domaine
+			if(domaine.length<2){
+				alert('domaine min 2 ');
+				return false;
+			}
+			
+			//ext
+			if(extension.length<2 || extension.length>3){
+				alert('extension 2 ou 3');
+				return false;
+			}
+      event.preventDefault();
+			return true;
+			
+			}
+      function validationP(pass,pass2){
+				if(pass == ""){
+					alert('le champ mot de passe est obligatoire');
+					return false;
+				}
+        if(pass.length<8){
+          alert('Le mot de passe doit contenir plus que 8 carractere ')
+          return false;
+        }
+        if(pass2 == ""){
+					alert('le champ mot de passe 2 est obligatoire');
+					return false;
+				}
+        if(pass!=pass2){
+          alert('Le mot de passe a été mal confirmé  ')
+          return false;
+        }
+        event.preventDefault();
+				return true;
+			}
+      function validationA(age){
+        if(age == ""){
+					alert('vous devez saisir l\'age');
+					return false;
+				}
+        if(age<18){
+          alert('vous devez etre majeur ');
+          return false;
+        } 
+        return true;
+      }
+			//validation finale
+			function validation(name,email,pass,pass2,age){
+        return validationN(name) && validationMail(email) && validationP(pass,pass2) && validationA(age);
+			}
+		</script>
+  
+  </head>
+
+<body>
+
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="main-nav">
+                    <!-- *** Logo Start *** -->
+                    <a href="index.html" class="logo">
+                        <h1>CodeHeaven  </h1>
+                    </a>
+                    <!-- *** Logo End *** -->
+                    <!-- *** Menu Start *** -->
+                    <ul class="nav">
+                      <li><a href="index.html" class="active">Home</a></li>
+                      <li><a href="properties.html">Properties</a></li>
+                      <li><a href="property-details.html">Property Details</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+                  </ul>   
+                    <!-- *** Menu End *** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- *** Header Area End *** -->
+  
+
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <a href="login.html"><span class="breadcrumb">Login</span></a>
+         <a href="register.html"> <span class="breadcrumb">Register </span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-page section">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-lg-9 container">
+          <form id="contact-form" onsubmit="validation(document.getElementById('name').value,document.getElementById('email').value,
+          document.getElementById('pass').value,document.getElementById('pass2').value,document.getElementById('age').value)" >
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="name">Full Name</label>
+                  <input type="text" name="name" id="name" placeholder="Your Name..." autocomplete="on" >
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="email">Email Address</label>
+                  <input type="text" name="email" id="email" placeholder="Your E-mail...">
+                </fieldset>
+              </div>
+            <div class="col-lg-12">
+                <fieldset>
+                  <label for="pass">Password </label>
+                  <input type="password" name="pass" id="pass" placeholder="Password..." >
+                </fieldset>
+              </div>
+              
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="pass2">Confirm Password</label>
+                  <input type="password" name="pass2" id="pass2" placeholder="Confirm password..."  >
+                </fieldset>
+              </div>
+            
+              <fieldset>
+                <label for="age">Age (Minority check)</label>
+                <input type="number" name="age" id="age" placeholder="Your Age..." autocomplete="on">
+              </fieldset>
+
+            
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">Ok</button>
+                  <button type="reset" id="form-submit" class="orange-button">Reset</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container ">
+      <div class="col-lg-12 ">
+        <p>Copyright © 2024  CodeHeaven Hotel Co., Ltd. All rights reserved. 
+        
+    </div>
+  </footer>
+
+
+  </body>
+</html>
